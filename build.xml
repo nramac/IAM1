@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE project [
+]>
+
+<project name="S4" default="run" basedir=".">  
+
+<!-- ========== Initialize Properties =================================== -->
+    <property environment="env"/>
+    <property file="build.properties"/>
+    <property name="test.dest" value="${ws.home}/bin"/>
+    <property name="test.src" value="${ws.home}/src"/>
+
+
+    <target name="setClassPath" unless="test.classpath">
+        <path id="classpath_jars">
+            <fileset dir="${ws.home}/lib" includes="*.jar"/>
+        </path>
+        <pathconvert pathsep=";" 
+            property="test.classpath" 
+            refid="classpath_jars"/>
+    </target>
+
+    <target name="init" depends="setClassPath">
+        <tstamp>
+            <format property="start.time" pattern="MM/dd/yyyy hh:mm aa" />
+        </tstamp>
+        <condition property="ANT" 
+            value="${env.ANT_HOME}/bin/ant.bat" 
+            else="${env.ANT_HOME}/bin/ant">
+                    <os family="windows" />
+        </condition>
+    	<taskdef resource="testngtasks" classpath="${test.classpath}/testng.jar"/>
+    </target>
+  
+    <!-- all -->
+    <target name="all">
+    </target>
+
+    <!-- clean -->
+    <target name="clean">
+        <delete dir="${test.dest}"/>
+    </target>
+
+    <!-- compile -->
+    <target name="compile" depends="init, clean" > 
+		<delete includeemptydirs="true" quiet="true">
+            <fileset dir="${test.dest}" includes="**/*"/>
+		</delete>
+        <echo message="making directory..."/>
+		<mkdir dir="${test.dest}"/>
+        <echo message="classpath: ${test.classpath}"/>
+        <echo message="compiling..."/>
+        <javac 
+            debug="true" 
+            destdir="${test.dest}" 
+            srcdir="${test.src}" 
+            target="1.7" 
+            classpath="${test.classpath}"
+        >
+        </javac>
+      </target>
+	
+	<target name="buildJar" depends="compile">
+		<jar destfile="${ws.home}/jar/documentum1.4.jar" basedir="${test.dest}"/>
+	</target>
+	
+    <!-- build -->
+    <!-- run -->
+	  
+
+    <target name="run" depends="buildJar">
+		 
+	
+    	
+    </target>
+
+    <target name="usage">
+        <echo>
+            ant run will execute the test
+        </echo>
+    </target>
+
+    <!-- ****************** targets not used ****************** -->
+	
+
+</project>
