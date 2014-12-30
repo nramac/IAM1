@@ -10,12 +10,10 @@ import java.util.StringTokenizer;
 
 import org.openqa.selenium.WebDriver;
 
-import com.eon.core.web.EONWebKeyWords;
 
 public class VUKKeyWordSet  
 {
 	public VUKBaseKeyword objEBK = null;
-	public EONWebKeyWords objEWKW = null;
 	public VUKCustomizedKeyWord objVUKCK = null;
 	public VUKFeatures objVUKFeatures = null;
 	boolean methodExists = false;
@@ -162,6 +160,7 @@ public class VUKKeyWordSet
 			{
 				if(KeyWord.contains("Browser") && KeyWord.equalsIgnoreCase("setBrowser"))
 				{
+					
 					Class sChangeParamString = paramString[1];
 					method = sClassName.getDeclaredMethod(KeyWord, sChangeParamString);
 					driverInstance = (WebDriver) method.invoke(cObject,sParams);
