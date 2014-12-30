@@ -3,7 +3,6 @@ package com.util;
 
 import io.appium.java_client.AppiumDriver;
 
-import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 

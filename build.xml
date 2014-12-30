@@ -2,11 +2,11 @@
 <!DOCTYPE project [
 ]>
 
-<project name="S4" default="run" basedir=".">  
+<project name="Iam1" default="run" basedir=".">  
 
 <!-- ========== Initialize Properties =================================== -->
     <property environment="env"/>
-    <property file="build.properties"/>
+    <property file="./config/build.properties"/>
     <property name="test.dest" value="${ws.home}/bin"/>
     <property name="test.src" value="${ws.home}/src"/>
 
@@ -61,7 +61,7 @@
       </target>
 	
 	<target name="buildJar" depends="compile">
-		<jar destfile="${ws.home}/jar/documentum1.4.jar" basedir="${test.dest}"/>
+		<jar destfile="${ws.home}/jar/iam1.jar" basedir="${test.dest}"/>
 	</target>
 	
     <!-- build -->

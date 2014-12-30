@@ -5,7 +5,6 @@ import java.io.File;
 import jxl.Cell;
 import jxl.Sheet;
 import jxl.Workbook;
-import java.util.logging.Logger;
 
 
 public class VUKReadExcelInputData {

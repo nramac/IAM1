@@ -20,8 +20,10 @@ public class VUKFeatures extends VUKKeyWordSet
 
 		//Storing the image in the local system.
 		try {
-			 Reporter.log("<br> <img src="+".//images/" + new File(snapshotName+".jpeg")  + " /> <br>");
 			FileUtils.copyFile(objScreenCaptureFile ,new File("./images/"+snapshotName+".jpeg"));
+			 Reporter.log("<br> <img src="+".//images/" + new File(snapshotName+".png")  + " /> <br>");
+			 Reporter.log("<td><a href='"+snapshotName+".png'><img src='"+snapshotName+".png' height='100' width='100' /></a></td>");
+			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
