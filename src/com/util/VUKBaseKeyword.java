@@ -16,24 +16,26 @@ public class VUKBaseKeyword {
 	
 	public WebDriver driver;
 	
-	public WebDriver setBrowser(String sBrowserName) {
-		if(sBrowserName.equalsIgnoreCase("chrome"))
-		{
-			System.setProperty("webdriver.chrome.driver",
-					"C:\\Program Files\\Google\\Chrome\\Application\\chromedriver.exe");
-			
-			 driver = new ChromeDriver();
-		}
-		else if(sBrowserName.equalsIgnoreCase("firefox"))
-		{
-			 driver = new FirefoxDriver();
-		}
-		
-		return driver;
-	}
+//	public WebDriver setBrowser(String sBrowserName) {
+//		if(sBrowserName.equalsIgnoreCase("chrome"))
+//		{
+//			System.setProperty("webdriver.chrome.driver",
+//					"C:\\Program Files\\Google\\Chrome\\Application\\chromedriver.exe");
+//			
+//			 driver = new ChromeDriver();
+//		}
+//		else if(sBrowserName.equalsIgnoreCase("firefox"))
+//		{
+//			 driver = new FirefoxDriver();
+//		}
+//		
+//		return driver;
+//	}
 	public WebDriver setBrowser(String sBrowserName,String sDeviceName, String sOSVersion) {
+		System.out.println("before if"+sDeviceName);
 	if(sBrowserName.equalsIgnoreCase("android"))
 	{
+		System.out.println(sDeviceName);
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability(CapabilityType.BROWSER_NAME, "Chrome");
         capabilities.setCapability("deviceName",sDeviceName);
@@ -48,6 +50,14 @@ public class VUKBaseKeyword {
 			e.printStackTrace();
 		}
         System.out.println("Started the Chrome driver .......");
+	}
+	else if (sBrowserName.equalsIgnoreCase("chrome"))
+	{
+		System.out.println("uk in chrome");
+		System.setProperty("webdriver.chrome.driver",
+				"C:\\Program Files\\Google\\Chrome\\Application\\chromedriver.exe");
+		
+		 driver = new ChromeDriver();
 	}
 	return driver;
 	}

@@ -61,7 +61,7 @@
       </target>
 	
 	<target name="buildJar" depends="compile">
-		<jar destfile="${ws.home}/jar/iam1.jar" basedir="${test.dest}"/>
+		<jar destfile="${ws.home}/jar/iam1.1.jar" basedir="${test.dest}"/>
 	</target>
 	
     <!-- build -->

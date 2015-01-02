@@ -76,16 +76,51 @@ public class VUKKeyWordSet
 		public void callMethods(String KeyWord,String Param1, String Param2, String Param3)
 		{
 			paramString = new Class[4];	
-			paramString[0] = WebDriver.class;
-			paramString[1] = String.class;
-			paramString[2] = String.class;
-			paramString[4] = String.class;
-			
 			sParamters = new String[3];
-			sParamters[0] = Param1;
-			sParamters[2] = Param2;
-			sParamters[3] = Param3;
 			
+			if(!Param1.equals("") && !Param2.equals("") && !Param3.equals(""))
+			{
+				paramString[0] = WebDriver.class;
+				paramString[1] = String.class;
+				paramString[2] = String.class;
+				paramString[3] = String.class;
+				
+				sParamters[0] = Param1;
+				sParamters[1] = Param2;
+				sParamters[2] = Param3;
+			}
+			else if(Param1.equals(""))
+			{
+				paramString[0] = WebDriver.class;
+				paramString[1] = String.class;
+				
+				sParamters[1] = Param1;
+			}
+			
+			else if(Param2.equals(""))
+			{
+				paramString = new Class[2];	
+				sParamters = new String[1];
+				sParamters[0] =Param1;
+				paramString[0] = WebDriver.class;
+				paramString[1] = String.class;
+				
+			}
+			else if(Param3.equals(""))
+			{
+				paramString = new Class[3];	
+				sParamters = new String[2];
+				sParamters[0] =Param1;
+				paramString[0] = WebDriver.class;
+				paramString[1] = String.class;
+				paramString[2] = String.class;
+				
+			}
+			else
+			{
+				paramString = null;
+				sParamters = null;
+			}
 			invokeMethodWithParameters(KeyWord,paramString,sParamters);
 		}
 		
@@ -158,10 +193,29 @@ public class VUKKeyWordSet
 			{
 				if(KeyWord.contains("Browser") && KeyWord.equalsIgnoreCase("setBrowser"))
 				{
+					if(sParams[0].contains("android") && sParams[0].equalsIgnoreCase("android"))
+					{
+						Class []sChangeParamString = new Class[3];
+						sChangeParamString[0]= paramString[1];
+						sChangeParamString[1]= paramString[2];
+						sChangeParamString[2]= paramString[3];
+						method = sClassName.getDeclaredMethod(KeyWord, sChangeParamString);
+						driverInstance = (WebDriver) method.invoke(cObject,sParams);
+					}
+					else if(sParams[0].contains("chrome") && sParams[0].equalsIgnoreCase("chrome"))
+					{
+						Class []sChangeParamString = new Class[3];
+						sChangeParamString[0]= paramString[1];
+						sChangeParamString[1]= paramString[2];
+						sChangeParamString[2]= paramString[3];
+						method = sClassName.getDeclaredMethod(KeyWord, sChangeParamString);
+						driverInstance = (WebDriver) method.invoke(cObject,sParams);
+					}
+					else
+					{
+						System.out.println("do nothing");
+					}
 					
-					Class sChangeParamString = paramString[1];
-					method = sClassName.getDeclaredMethod(KeyWord, sChangeParamString);
-					driverInstance = (WebDriver) method.invoke(cObject,sParams);
 				}
 				else
 				{
@@ -197,5 +251,11 @@ public class VUKKeyWordSet
 			e.printStackTrace();
 		}
 		return method;
+	}
+	public void openUrl(WebDriver driver,String url)
+	{
+		
+		System.out.println("Udayy in open url  "+driver);
+		driver.get(url);
 	}
 }
