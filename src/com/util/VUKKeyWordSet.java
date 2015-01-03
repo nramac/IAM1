@@ -54,16 +54,17 @@ public class VUKKeyWordSet
 				paramString[0] = WebDriver.class;
 				paramString[1] = String.class;
 				
-				sParamters[1] = Param1;
+				sParamters[0] = Param2;
 			}
 			
 			else if(Param2.equals(""))
 			{
 				paramString = new Class[2];	
 				sParamters = new String[1];
-				sParamters[0] =Param1;
+			
 				paramString[0] = WebDriver.class;
 				paramString[1] = String.class;
+				sParamters[0] =Param1;
 				
 			}
 			else
@@ -75,11 +76,11 @@ public class VUKKeyWordSet
 		}
 		public void callMethods(String KeyWord,String Param1, String Param2, String Param3)
 		{
-			paramString = new Class[4];	
-			sParamters = new String[3];
-			
 			if(!Param1.equals("") && !Param2.equals("") && !Param3.equals(""))
 			{
+				paramString = new Class[4];	
+				sParamters = new String[3];
+				
 				paramString[0] = WebDriver.class;
 				paramString[1] = String.class;
 				paramString[2] = String.class;
@@ -89,32 +90,54 @@ public class VUKKeyWordSet
 				sParamters[1] = Param2;
 				sParamters[2] = Param3;
 			}
-			else if(Param1.equals(""))
-			{
-				paramString[0] = WebDriver.class;
-				paramString[1] = String.class;
-				
-				sParamters[1] = Param1;
-			}
 			
-			else if(Param2.equals(""))
+			else if((!Param1.equals("") && Param2.equals("") && Param3.equals("")) ||(!Param2.equals("") && Param1.equals("") && Param3.equals(""))||
+					(!Param3.equals("") && Param1.equals("") && Param2.equals("")))
 			{
 				paramString = new Class[2];	
 				sParamters = new String[1];
-				sParamters[0] =Param1;
 				paramString[0] = WebDriver.class;
 				paramString[1] = String.class;
+				 if (!Param1.equals(""))
+				 {
+					 sParamters[0] = Param1;
+				 }
+				 else if (!Param2.equals(""))
+				 {
+					 sParamters[0] = Param2;
+				 }
+				 else if (!Param3.equals(""))
+				 {
+					 sParamters[0] = Param3;
+				 }
 				
 			}
-			else if(Param3.equals(""))
+			
+			else if ((Param1.equals("") && !Param2.equals("") && !Param3.equals("")) || (Param2.equals("")&& !Param1.equals("") && !Param3.equals(""))||
+					(Param3.equals("")&& !Param1.equals("") && !Param2.equals("")))
 			{
 				paramString = new Class[3];	
 				sParamters = new String[2];
-				sParamters[0] =Param1;
+				
 				paramString[0] = WebDriver.class;
 				paramString[1] = String.class;
 				paramString[2] = String.class;
 				
+				if (Param1.equals(""))
+				{
+					sParamters[0] = Param2;
+					sParamters[1] = Param3;
+				}
+				else if (Param2.equals(""))
+				{
+					sParamters[0] = Param1;
+					sParamters[1] = Param3;
+				}
+				else if (Param3.equals(""))
+				{
+					sParamters[0] = Param1;
+					sParamters[1] = Param2;
+				}
 			}
 			else
 			{
@@ -184,13 +207,6 @@ public class VUKKeyWordSet
 			sClassName = Class.forName(checkMethodAndgetClassName(KeyWord).getName());
 			cObject= sClassName.newInstance();
 			
-			if(sParams == null && paramString == null)
-			{
-				method = sClassName.getDeclaredMethod(KeyWord);
-				method.invoke(cObject);
-			}
-			else
-			{
 				if(KeyWord.contains("Browser") && KeyWord.equalsIgnoreCase("setBrowser"))
 				{
 					if(sParams[0].contains("android") && sParams[0].equalsIgnoreCase("android"))
@@ -219,17 +235,27 @@ public class VUKKeyWordSet
 				}
 				else
 				{
-					Object [] sParamtersNew = new Object[sParams.length+1];
-					method = sClassName.getDeclaredMethod(KeyWord,paramString);
-					for(int j=0;j<sParams.length;j++)
+					if(sParams == null || paramString == null)
 					{
-						sParamtersNew[j-j] =driverInstance;
-						sParamtersNew[j+1]=sParams[j];
+						Class []sChangeParamString = new Class[1];
+						sChangeParamString[0]= WebDriver.class;
+						Object [] sParamtersNew = new Object[1];
+						sParamtersNew[0] = driverInstance;
+						method = sClassName.getDeclaredMethod(KeyWord,sChangeParamString);
+						method.invoke(cObject,sParamtersNew);
 					}
-					method.invoke(cObject,sParamtersNew);
+					else
+					{
+						Object [] sParamtersNew = new Object[sParams.length+1];
+						method = sClassName.getDeclaredMethod(KeyWord,paramString);
+						for(int j=0;j<sParams.length;j++)
+						{
+							sParamtersNew[j-j] =driverInstance;
+							sParamtersNew[j+1]=sParams[j];
+						}
+						method.invoke(cObject,sParamtersNew);
+					}
 				}
-				
-			}
 		}
 		catch (InstantiationException e) {
 			e.printStackTrace();
@@ -251,11 +277,5 @@ public class VUKKeyWordSet
 			e.printStackTrace();
 		}
 		return method;
-	}
-	public void openUrl(WebDriver driver,String url)
-	{
-		
-		System.out.println("Udayy in open url  "+driver);
-		driver.get(url);
 	}
 }
