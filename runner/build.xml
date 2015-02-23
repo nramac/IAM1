@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE project [
+]>
+
+<project name="S4" default="run" basedir=".">  
+<!-- ========== Initialize Properties =================================== -->
+    <property environment="env"/>
+    <property file="IAOBuildconfig.properties"/>
+    <property name="iamone.dest" value="${iamone.home}/bin"/>
+    <property name="iamone.src" value="${iamone.home}/src"/>
+	
+	 <target name="setClassPath" unless="iamone.classpath">
+        <path id="classpath_jars">
+            <fileset dir="${iamone.home}/lib/support" includes="*.jar"/>
+        </path>
+        <pathconvert pathsep=";" 
+            property="iamone.classpath" 
+            refid="classpath_jars"/>
+    </target>
+    <target name="init" depends="setClassPath">
+        <tstamp>
+            <format property="start.time" pattern="MM/dd/yyyy hh:mm aa" />
+        </tstamp>
+       
+        <taskdef resource="testngtasks" classpath="${iamone.home}/lib/support/testng-6.8.5.jar"/>
+    </target>
+    
+     <!-- clean -->
+    <target name="clean">
+        <delete dir="${iamone.dest}"/>
+    </target>
+     <!-- compile -->
+    <target name="compile" depends="init, clean" > 
+		<delete includeemptydirs="true" quiet="true">
+            <fileset dir="${iamone.dest}" includes="**/*"/>
+		</delete>
+        <echo message="making directory..."/>
+		<mkdir dir="${iamone.dest}"/>
+		
+        <echo message="classpath: ${iamone.classpath}"/>
+        <echo message="compiling..."/>
+        <javac 
+            debug="true" 
+            destdir="${iamone.dest}" 
+            srcdir="${iamone.src}" 
+            target="1.7" 
+            classpath="${iamone.classpath}"
+            includeantruntime="false"
+        >
+        </javac>
+      </target>
+	<target name="run" depends="compile">
+		<!--on building for jar file please remove the below testng attributes-->
+		<echo message="Running Tests..." />
+   		<testng outputDir="${TestSuiteResult}"  haltOnfailure="false">
+    		<xmlfileset dir="${TestSuiteDir}" includes="${TestSuiteName}" />
+    		<classpath>
+    		                               <pathelement path="${iamone.dest}"/>
+    		                               <pathelement path="${iamone.classpath}"/>
+    		                               <pathelement location="${iamone.dest}"/>
+    		                               
+    		</classpath>
+   		 </testng>
+    		<path id="run.classpasth">
+    		<fileset dir="${iamone.home}/lib/support" includes="*.jar"/>
+    		<fileset dir="${iamone.home}/bin" includes="*.jar"/>
+    		</path>
+    </target>
+</project>

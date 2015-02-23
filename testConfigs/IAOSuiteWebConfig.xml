@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="WEB_test_Suite" verbose="5">
+<listeners>
+      <listener class-name="org.uncommons.reportng.HTMLReporter"/>
+      <listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>
+  </listeners>
+  <test name="Test_Cases_for_WEB" group-by-instances="true">
+      <parameter name="browser" value=""/>
+	<classes>
+	   	<class name="" />
+	</classes>
+  </test>
+</suite>

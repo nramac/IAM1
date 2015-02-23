@@ -2,7 +2,7 @@
 <!DOCTYPE project [
 ]>
 
-<project name="Iam1" default="run" basedir=".">  
+<project name="iamone" default="run" basedir=".">  
 
 <!-- ========== Initialize Properties =================================== -->
     <property environment="env"/>
@@ -13,7 +13,7 @@
 
     <target name="setClassPath" unless="test.classpath">
         <path id="classpath_jars">
-            <fileset dir="${ws.home}/lib" includes="*.jar"/>
+            <fileset dir="${ws.home}/lib/support" includes="*.jar"/>
         </path>
         <pathconvert pathsep=";" 
             property="test.classpath" 
@@ -61,7 +61,7 @@
       </target>
 	
 	<target name="buildJar" depends="compile">
-		<jar destfile="${ws.home}/jar/iam1.1.jar" basedir="${test.dest}"/>
+		<jar destfile="${ws.home}/lib/iamone_1.0.jar" basedir="${test.dest}"/>
 	</target>
 	
     <!-- build -->
@@ -69,18 +69,8 @@
 	  
 
     <target name="run" depends="buildJar">
-		 
-	
     	
     </target>
-
-    <target name="usage">
-        <echo>
-            ant run will execute the test
-        </echo>
-    </target>
-
     <!-- ****************** targets not used ****************** -->
-	
 
 </project>

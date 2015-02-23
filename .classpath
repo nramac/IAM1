@@ -2,21 +2,31 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
-	<classpathentry kind="lib" path="C:/uday/workspace/VUKSameAuto/lib/commons-codec-1.9.jar"/>
-	<classpathentry kind="lib" path="C:/uday/workspace/VUKSameAuto/lib/commons-collections-3.2.1.jar"/>
-	<classpathentry kind="lib" path="C:/uday/workspace/VUKSameAuto/lib/commons-exec-1.1.jar"/>
-	<classpathentry kind="lib" path="C:/uday/workspace/VUKSameAuto/lib/commons-io-2.4.jar"/>
-	<classpathentry kind="lib" path="C:/uday/workspace/VUKSameAuto/lib/commons-jxpath-1.3.jar"/>
-	<classpathentry kind="lib" path="C:/uday/workspace/VUKSameAuto/lib/commons-lang3-3.3.2.jar"/>
-	<classpathentry kind="lib" path="C:/uday/workspace/VUKSameAuto/lib/commons-logging-1.1.3.jar"/>
-	<classpathentry kind="lib" path="C:/uday/workspace/VUKSameAuto/lib/gson-1.7.jar"/>
-	<classpathentry kind="lib" path="C:/uday/workspace/VUKSameAuto/lib/guava-15.0.jar"/>
-	<classpathentry kind="lib" path="C:/uday/workspace/VUKSameAuto/lib/httpclient-4.3.4.jar"/>
-	<classpathentry kind="lib" path="C:/uday/workspace/VUKSameAuto/lib/httpcore-4.3.2.jar"/>
-	<classpathentry kind="lib" path="C:/uday/workspace/VUKSameAuto/lib/httpmime-4.3.4.jar"/>
-	<classpathentry kind="lib" path="C:/uday/workspace/VUKSameAuto/lib/java-client-2.1.0.jar"/>
-	<classpathentry kind="lib" path="C:/uday/workspace/VUKSameAuto/lib/selenium-java-2.44.0.jar"/>
-	<classpathentry kind="lib" path="C:/uday/workspace/VUKSameAuto/lib/testng-6.8.5.jar"/>
-	<classpathentry kind="lib" path="C:/uday/workspace/VUKSameAuto/lib/jxl.jar"/>
+	<classpathentry kind="lib" path="C:/uday/workspace/VUKSameAuto/lib/support/ATUReporter_Selenium_testNG_5.1.1.jar"/>
+	<classpathentry kind="lib" path="C:/uday/workspace/VUKSameAuto/lib/support/ATUTestRecorder_2.1.jar"/>
+	<classpathentry kind="lib" path="C:/uday/workspace/VUKSameAuto/lib/support/com.mysql.jdbc_5.1.5.jar"/>
+	<classpathentry kind="lib" path="C:/uday/workspace/VUKSameAuto/lib/support/commons-codec-1.9.jar"/>
+	<classpathentry kind="lib" path="C:/uday/workspace/VUKSameAuto/lib/support/commons-collections-3.2.1.jar"/>
+	<classpathentry kind="lib" path="C:/uday/workspace/VUKSameAuto/lib/support/commons-exec-1.1.jar"/>
+	<classpathentry kind="lib" path="C:/uday/workspace/VUKSameAuto/lib/support/commons-io-2.4.jar"/>
+	<classpathentry kind="lib" path="C:/uday/workspace/VUKSameAuto/lib/support/commons-jxpath-1.3.jar"/>
+	<classpathentry kind="lib" path="C:/uday/workspace/VUKSameAuto/lib/support/commons-lang3-3.3.2.jar"/>
+	<classpathentry kind="lib" path="C:/uday/workspace/VUKSameAuto/lib/support/commons-logging-1.1.3.jar"/>
+	<classpathentry kind="lib" path="C:/uday/workspace/VUKSameAuto/lib/support/gson-1.7.jar"/>
+	<classpathentry kind="lib" path="C:/uday/workspace/VUKSameAuto/lib/support/guava-15.0.jar"/>
+	<classpathentry kind="lib" path="C:/uday/workspace/VUKSameAuto/lib/support/guice-3.0.jar"/>
+	<classpathentry kind="lib" path="C:/uday/workspace/VUKSameAuto/lib/support/httpclient-4.3.4.jar"/>
+	<classpathentry kind="lib" path="C:/uday/workspace/VUKSameAuto/lib/support/httpcore-4.3.2.jar"/>
+	<classpathentry kind="lib" path="C:/uday/workspace/VUKSameAuto/lib/support/httpmime-4.3.4.jar"/>
+	<classpathentry kind="lib" path="C:/uday/workspace/VUKSameAuto/lib/support/java-client-2.1.0.jar"/>
+	<classpathentry kind="lib" path="C:/uday/workspace/VUKSameAuto/lib/support/jcommander-1.29.jar"/>
+	<classpathentry kind="lib" path="C:/uday/workspace/VUKSameAuto/lib/support/jxl.jar"/>
+	<classpathentry kind="lib" path="C:/uday/workspace/VUKSameAuto/lib/support/MonteScreenRecorder.jar"/>
+	<classpathentry kind="lib" path="C:/uday/workspace/VUKSameAuto/lib/support/ojdbc6.jar"/>
+	<classpathentry kind="lib" path="C:/uday/workspace/VUKSameAuto/lib/support/reportng-1.1.4.jar"/>
+	<classpathentry kind="lib" path="C:/uday/workspace/VUKSameAuto/lib/support/screen_recorder.jar"/>
+	<classpathentry kind="lib" path="C:/uday/workspace/VUKSameAuto/lib/support/selenium-java-2.44.0.jar"/>
+	<classpathentry kind="lib" path="C:/uday/workspace/VUKSameAuto/lib/support/testng-6.8.5.jar"/>
+	<classpathentry kind="lib" path="C:/uday/workspace/VUKSameAuto/lib/support/velocity-dep-1.4.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
