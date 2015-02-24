@@ -2,7 +2,6 @@ package org.vukfactory.iamone.basic;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Properties;
 
@@ -14,7 +13,7 @@ public class IAODataReader
 {
 	FileInputStream proFileName;
 	File sTempFile;
-	String sValue, sEnvironment;
+	String sValue;
 	Properties objproperties = new Properties();
 
 	/**
@@ -25,7 +24,7 @@ public class IAODataReader
 	 */
 	public String getProperty(String sKey) throws IOException
 	{
-		proFileName = new FileInputStream("../config/IAMONE.properties");
+		proFileName = new FileInputStream("./config/IAMONE.properties");
 		objproperties.load(proFileName);
 		sValue = objproperties.getProperty(sKey);
 		return sValue;

@@ -1,6 +1,5 @@
 package org.vukfactory.iamone.basic;
 
-
 import org.openqa.selenium.WebDriver;
 
 public class IAOBasicFunctions 
@@ -11,7 +10,7 @@ public class IAOBasicFunctions
 		Thread.sleep(5000); //wait 5 seconds to clear cookies.
 	}
 	
-	public void openUrlInMobile(WebDriver driver,String url)
+	public void openUrlInBrowser(WebDriver driver,String url)
 	{
 		driver.get(url);
 		

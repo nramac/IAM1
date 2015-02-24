@@ -18,7 +18,7 @@ public class IAODrivers {
 	public static WebDriver driver;
 	
 	@SuppressWarnings("static-access")
-	DesiredCapabilities capabilities = new DesiredCapabilities().android();
+	DesiredCapabilities capabilities = new DesiredCapabilities();
 	
 	
 	//This method will invoke Firefox driver
@@ -53,8 +53,7 @@ public class IAODrivers {
 		return driver;
 	}
 	
-	//This method will invoke Android driver with Chrome as Browser
-	public WebDriver setIPhoneBrowser(String sMacServerName,String sDeviceName, String sOSVersion, String sServerName) {
+	public WebDriver setIPhoneBrowser(String sDeviceName, String sOSVersion, String sServerName) {
 
 	try {
 				driver = new IOSDriver(new URL(sServerName), capabilities);
@@ -87,7 +86,7 @@ public class IAODrivers {
 			return (AndroidDriver) driver;
 		}
 	
-	public void closeDriverSession(WebDriver driver) 
+	public void closeDriver(WebDriver driver) 
 	{
 			driver.quit();
 	}	

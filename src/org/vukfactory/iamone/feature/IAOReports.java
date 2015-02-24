@@ -23,7 +23,7 @@ import atu.testrecorder.exceptions.ATUTestRecorderException;
 
 public class IAOReports
 {
-	IAODataReader objProp ;
+	IAODataReader objProp;
 	ATUTestRecorder recorder;
 	public WebDriver driver;
 	Date currentDate = new Date(System.currentTimeMillis());
@@ -33,13 +33,14 @@ public class IAOReports
 		File objScreenCaptureFile;
 		SimpleDateFormat formater;
 		File copyFile;
+		objProp = new IAODataReader();
 		objScreenCaptureFile= ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
 		
 		//Storing the image in the local system.
 		try {
 			formater = new
 					SimpleDateFormat("dd_MM_yyyy_hh_mm_ss");
-			copyFile = new File("../Reports/Images/"+snapshotName+"_"+formater.format(Calendar.getInstance().getTime())+".png");
+			copyFile = new File(objProp.getProperty("IAMONE.ScreenShot.dir")+snapshotName+"_"+formater.format(Calendar.getInstance().getTime())+".png");
 			String sFilePath = copyFile.getAbsolutePath();
 			FileUtils.copyFile(objScreenCaptureFile ,copyFile);
 			Reporter.log("<a href=" + sFilePath + " target='_blank' >" + snapshotName + "</a>");
@@ -78,9 +79,8 @@ public class IAOReports
 	public ATUTestRecorder startRecorder()
 	{
 		try {
-			
-			recorder = setVideoRecorder();
-			recorder.start();
+				recorder = setVideoRecorder();
+				recorder.start();
 		} catch (ATUTestRecorderException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -88,10 +88,10 @@ public class IAOReports
 		return recorder;
 	}
 	
-	public void stopRecorder(ATUTestRecorder srecorderInstance)
+	public void stopRecorder()
 	{
 		try {
-			srecorderInstance.stop();
+				recorder.stop();
 		} catch (ATUTestRecorderException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

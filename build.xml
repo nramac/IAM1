@@ -9,6 +9,7 @@
     <property file="build.properties"/>
     <property name="iamone.dest" value="${iamone.home}/bin"/>
     <property name="iamone.src" value="${iamone.home}/src"/>
+    <property name="jar.file"      value="${iamone.home}/lib/iao_1.0.0.jar"/>
 
 
     <target name="setClassPath" unless="test.classpath">
@@ -60,7 +61,9 @@
       </target>
 	
 	<target name="buildJar" depends="compile">
-		<jar destfile="${iamone.home}/lib/iamone_1.1.jar" basedir="${iamone.dest}"/>
+		<jar destfile="${jar.file}" basedir="${iamone.dest}">
+			<zipgroupfileset  dir="${iamone.home}/lib/support" includes="**/*.jar" />
+		</jar>
 	</target>
 	
     <!-- build -->

@@ -34,7 +34,7 @@ public class IAOPageInteraction
 		return driver.findElement(By.cssSelector(sCssSelector));
 	}
 	
-	public WebElement byID(WebDriver driver,String sId)
+	public WebElement byId(WebDriver driver,String sId)
 	{
 		return driver.findElement(By.id(sId));
 	}
@@ -119,14 +119,11 @@ public class IAOPageInteraction
 			selectRef.deselectByVisibleText(sValue);
 		}
 	}
-	public void selectValue(WebDriver driver,Select selectRef, String selectType, String sValue)
-	{
-		
-	}
 	
 	public boolean isElementPresent(WebDriver driver,By by) {
 	    try {
 	      driver.findElement(by);
+	      
 	      return true;
 	    } catch (NoSuchElementException e) {
 	      return false;
