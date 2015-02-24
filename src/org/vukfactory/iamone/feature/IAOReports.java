@@ -21,7 +21,7 @@ import atu.testng.reports.utils.Utils;
 import atu.testrecorder.ATUTestRecorder;
 import atu.testrecorder.exceptions.ATUTestRecorderException;
 
-public class IAMONEUtilities 
+public class IAOReports
 {
 	IAODataReader objProp ;
 	ATUTestRecorder recorder;

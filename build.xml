@@ -6,14 +6,14 @@
 
 <!-- ========== Initialize Properties =================================== -->
     <property environment="env"/>
-    <property file="./config/build.properties"/>
-    <property name="test.dest" value="${ws.home}/bin"/>
-    <property name="test.src" value="${ws.home}/src"/>
+    <property file="build.properties"/>
+    <property name="iamone.dest" value="${iamone.home}/bin"/>
+    <property name="iamone.src" value="${iamone.home}/src"/>
 
 
     <target name="setClassPath" unless="test.classpath">
         <path id="classpath_jars">
-            <fileset dir="${ws.home}/lib/support" includes="*.jar"/>
+            <fileset dir="${iamone.home}/lib/support" includes="*.jar"/>
         </path>
         <pathconvert pathsep=";" 
             property="test.classpath" 
@@ -29,7 +29,6 @@
             else="${env.ANT_HOME}/bin/ant">
                     <os family="windows" />
         </condition>
-    	<taskdef resource="testngtasks" classpath="${test.classpath}/testng.jar"/>
     </target>
   
     <!-- all -->
@@ -38,22 +37,22 @@
 
     <!-- clean -->
     <target name="clean">
-        <delete dir="${test.dest}"/>
+        <delete dir="${iamone.dest}"/>
     </target>
 
     <!-- compile -->
     <target name="compile" depends="init, clean" > 
 		<delete includeemptydirs="true" quiet="true">
-            <fileset dir="${test.dest}" includes="**/*"/>
+            <fileset dir="${iamone.dest}" includes="**/*"/>
 		</delete>
         <echo message="making directory..."/>
-		<mkdir dir="${test.dest}"/>
+		<mkdir dir="${iamone.dest}"/>
         <echo message="classpath: ${test.classpath}"/>
         <echo message="compiling..."/>
         <javac 
             debug="true" 
-            destdir="${test.dest}" 
-            srcdir="${test.src}" 
+            destdir="${iamone.dest}" 
+            srcdir="${iamone.src}" 
             target="1.7" 
             classpath="${test.classpath}"
         >
@@ -61,7 +60,7 @@
       </target>
 	
 	<target name="buildJar" depends="compile">
-		<jar destfile="${ws.home}/lib/iamone_1.0.jar" basedir="${test.dest}"/>
+		<jar destfile="${iamone.home}/lib/iamone_1.1.jar" basedir="${iamone.dest}"/>
 	</target>
 	
     <!-- build -->
