@@ -2,6 +2,8 @@ package org.vukfactory.iamone.driver;
 
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
+import io.appium.java_client.remote.MobileCapabilityType;
+import io.appium.java_client.remote.MobilePlatform;
 
 import java.io.File;
 import java.net.MalformedURLException;
@@ -41,7 +43,7 @@ public class IAODrivers {
         capabilities.setCapability(CapabilityType.BROWSER_NAME, "Chrome");
         capabilities.setCapability("deviceName",sDeviceName);
         capabilities.setCapability("platformVersion", sOSVersion);
-        capabilities.setCapability("platformName","Android");
+        capabilities.setCapability("platformName",MobilePlatform.ANDROID);
         capabilities.setCapability("app", "chrome");
         
         try {
@@ -52,25 +54,14 @@ public class IAODrivers {
 		}
 		return driver;
 	}
-	
-	public WebDriver setIPhoneBrowser(String sDeviceName, String sOSVersion, String sServerName) {
 
-	try {
-				driver = new IOSDriver(new URL(sServerName), capabilities);
-		} catch (MalformedURLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			return driver;
-		}
-	
 	//This method will invoke Android driver with Chrome as Browser
-		public AndroidDriver setAndroidApp(String sDeviceName, String sOSVersion,String sAppPath,String sPackageName, String sActivityName,String sServerName) {
+	public AndroidDriver setAndroidApp(String sDeviceName, String sOSVersion,String sAppPath,String sPackageName, String sActivityName,String sServerName) {
 
 			File fappPath = new File(sAppPath);
 	        capabilities.setCapability("deviceName",sDeviceName);
 	        capabilities.setCapability("platformVersion", sOSVersion);
-	        capabilities.setCapability("platformName","Android");
+	        capabilities.setCapability("platformName",MobilePlatform.ANDROID);
 	        capabilities.setCapability("app", fappPath.getAbsolutePath());
 	        capabilities.setCapability("appPackage", sPackageName);
 	        capabilities.setCapability("appActivity", sActivityName);
@@ -85,6 +76,39 @@ public class IAODrivers {
 			}
 			return (AndroidDriver) driver;
 		}
+	public IOSDriver setIPhoneBrowser(String sDeviceName, String sOSVersion,String sServerName) {
+
+		capabilities.setCapability("browserName", "safari");
+		capabilities.setCapability("platformVersion", sOSVersion);
+		capabilities.setCapability("platformName", MobilePlatform.IOS);
+		capabilities.setCapability("deviceName", sDeviceName);
+
+        try {
+			driver = new IOSDriver(new URL(sServerName), capabilities);
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return (IOSDriver) driver;
+	}
+	public IOSDriver setIOSApp(String sDeviceName, String sOSVersion,String sAppPath,String sServerName) {
+
+		File fappPath = new File(sAppPath);
+		capabilities.setCapability("browserName", "");
+	    capabilities.setCapability("platformVersion", sOSVersion);
+	    capabilities.setCapability("platformName", MobilePlatform.IOS);
+	    capabilities.setCapability("deviceName", sDeviceName);
+	    capabilities.setCapability("app", fappPath.getAbsolutePath());
+
+        try {
+			driver = new IOSDriver(new URL(sServerName), capabilities);
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return (IOSDriver) driver;
+	}
+	
 	
 	public void closeDriver(WebDriver driver) 
 	{
