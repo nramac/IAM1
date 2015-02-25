@@ -13,6 +13,21 @@ public class IAOBasicFunctions
 	public void openUrlInBrowser(WebDriver driver,String url)
 	{
 		driver.get(url);
-		
+	}
+	public void goToBack(WebDriver driver)
+	{
+		driver.navigate().back();
+	}
+	public void goForward(WebDriver driver)
+	{
+		driver.navigate().forward();
+	}
+	public void refreshBrowser(WebDriver driver)
+	{
+		driver.navigate().refresh();
+	}
+	public String getTitle(WebDriver driver)
+	{
+		return driver.getTitle();
 	}
 }

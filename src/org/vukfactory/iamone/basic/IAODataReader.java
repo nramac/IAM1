@@ -24,7 +24,8 @@ public class IAODataReader
 	 */
 	public String getProperty(String sKey) throws IOException
 	{
-		proFileName = new FileInputStream("./config/IAMONE.properties");
+		sTempFile = new File("../config/IAMONE.properties"); 
+		proFileName = new FileInputStream(sTempFile.getPath());
 		objproperties.load(proFileName);
 		sValue = objproperties.getProperty(sKey);
 		return sValue;

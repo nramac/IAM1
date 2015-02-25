@@ -13,11 +13,14 @@
    	<parameter name="AppEnvironment" value=""/>
    	<parameter name="DBEnvironment" value=""/>
    	<parameter name="MobileID" value=""/>
-    <parameter name="MobileVersion" value=""/>
+   	<parameter name="MobileVersion" value=""/>
+   	<parameter name="AppPath" value=""/>
+   	<parameter name="PacKageName" value=""/>
+   	<parameter name="ActivityName" value=""/>
     <parameter name="AppiumRunningAt" value="http://127.0.0.1:4723/wd/hub"/>
 	<classes>
 	   <class
 	    name="" />
 	</classes>
   </test>
-</suite> <!-- Default suite -->
+</suite>

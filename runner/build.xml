@@ -11,7 +11,7 @@
 	
 	 <target name="setClassPath" unless="iamone.classpath">
         <path id="classpath_jars">
-            <fileset dir="${iamone.home}/lib/support" includes="*.jar"/>
+            <fileset dir="${iamone.home}/lib/" includes="*.jar"/>
         </path>
         <pathconvert pathsep=";" 
             property="iamone.classpath" 
@@ -22,7 +22,7 @@
             <format property="start.time" pattern="MM/dd/yyyy hh:mm aa" />
         </tstamp>
        
-        <taskdef resource="testngtasks" classpath="${iamone.home}/lib/support/testng-6.8.5.jar"/>
+        <taskdef resource="testngtasks" classpath="${iamone.home}/lib/iao_1.0.0.jar"/>
     </target>
     
      <!-- clean -->
@@ -62,7 +62,7 @@
     		</classpath>
    		 </testng>
     		<path id="run.classpasth">
-    		<fileset dir="${iamone.home}/lib/support" includes="*.jar"/>
+    		<fileset dir="${iamone.home}/lib/" includes="*.jar"/>
     		<fileset dir="${iamone.home}/bin" includes="*.jar"/>
     		</path>
     </target>

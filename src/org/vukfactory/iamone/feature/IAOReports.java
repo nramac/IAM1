@@ -7,8 +7,6 @@ import java.util.Calendar;
 import java.util.Date;
 
 import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -43,7 +41,7 @@ public class IAOReports
 			copyFile = new File(objProp.getProperty("IAMONE.ScreenShot.dir")+snapshotName+"_"+formater.format(Calendar.getInstance().getTime())+".png");
 			String sFilePath = copyFile.getAbsolutePath();
 			FileUtils.copyFile(objScreenCaptureFile ,copyFile);
-			Reporter.log("<a href=" + sFilePath + " target='_blank' >" + snapshotName + "</a>");
+			//Reporter.log("<a href=" + sFilePath + " target='_blank' >" + snapshotName + "</a>");
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
