@@ -1,5 +1,5 @@
 @echo off
-@echo Thanks for using IAMONE. Copyrighted to VUKFactory %1 %2 
+@echo Thanks for using IAMONE. Copyrighted to VUKFactory %1
 echo %1
 
 if "%1" == "WEB" (set suite=IAOSuiteWebConfig.xml)
@@ -11,6 +11,6 @@ if "%1"=="IOSAPP" (set suite=IAOSuiteIOSAPPConfig.xml)
 
 @echo off
 cd runner
-ant -DTestSuiteDir = "../testConfigs" -DTestSuiteName = "%suite%" -DTestSuiteResult = %2
+ant -DTestSuiteDir = "../testConfigs" -DTestSuiteName = "%suite%"
 exit /b
 

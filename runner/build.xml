@@ -55,7 +55,7 @@
 		<!--on building for jar file please remove the below testng attributes-->
 		<echo message="Running Tests..." />
 		<java classname="org.vukfactory.iamone.util.IAOsetResultPath">
-     	<arg value="${TestSuiteResult}"/>
+     	<arg value="${TestSuiteName}"/>
     	 <classpath>
        		<fileset dir="${iamone.home}/lib/" includes="*.jar"/>
       		 <pathelement path="${iamone.classpath}"/>
