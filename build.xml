@@ -9,7 +9,7 @@
     <property file="build.properties"/>
     <property name="iamone.dest" value="${iamone.home}/bin"/>
     <property name="iamone.src" value="${iamone.home}/src"/>
-    <property name="jar.file"      value="${iamone.home}/lib/iao_1.0.0.jar"/>
+    <property name="jar.file"      value="${iamone.home}/lib/iao_1.0.1.jar"/>
 
 
     <target name="setClassPath" unless="test.classpath">

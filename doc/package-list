@@ -3,4 +3,5 @@ org.vukfactory.iamone.driver
 org.vukfactory.iamone.feature
 org.vukfactory.iamone.ui
 org.vukfactory.iamone.util
+testCases.IOSMW
 testCases.androidAPP

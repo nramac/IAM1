@@ -6,8 +6,10 @@
 <!-- ========== Initialize Properties =================================== -->
     <property environment="env"/>
     <property file="IAOBuildconfig.properties"/>
+    <property file="IAMONE.properties"/>
     <property name="iamone.dest" value="${iamone.home}/bin"/>
     <property name="iamone.src" value="${iamone.home}/src"/>
+    <property name="iamone.report" value="${IAMONE.Reports}"/>
 	
 	 <target name="setClassPath" unless="iamone.classpath">
         <path id="classpath_jars">
@@ -22,7 +24,7 @@
             <format property="start.time" pattern="MM/dd/yyyy hh:mm aa" />
         </tstamp>
        
-        <taskdef resource="testngtasks" classpath="${iamone.home}/lib/iao_1.0.0.jar"/>
+        <taskdef resource="testngtasks" classpath="${iamone.home}/lib/iao_1.0.1.jar"/>
     </target>
     
      <!-- clean -->
@@ -52,7 +54,14 @@
 	<target name="run" depends="compile">
 		<!--on building for jar file please remove the below testng attributes-->
 		<echo message="Running Tests..." />
-   		<testng outputDir="${TestSuiteResult}"  haltOnfailure="false">
+		<java classname="org.vukfactory.iamone.util.IAOsetResultPath">
+     	<arg value="${TestSuiteResult}"/>
+    	 <classpath>
+       		<fileset dir="${iamone.home}/lib/" includes="*.jar"/>
+      		 <pathelement path="${iamone.classpath}"/>
+    		 </classpath>
+  		 </java>
+   		<testng outputDir="${iamone.report}"  haltOnfailure="false">
     		<xmlfileset dir="${TestSuiteDir}" includes="${TestSuiteName}" />
     		<classpath>
     		                               <pathelement path="${iamone.dest}"/>
