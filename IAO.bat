@@ -11,6 +11,5 @@ if "%1"=="IOSAPP" (set suite=IAOSuiteIOSAPPConfig.xml)
 
 @echo off
 cd runner
-ant -DTestSuiteDir = "../testConfigs" -DTestSuiteName = "%suite%"
+ant -DTestSuiteDir = "../testConfigs" -DTestSuiteName = "%suite%" -DTestResultPath = %1
 exit /b
-

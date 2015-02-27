@@ -12,29 +12,66 @@ import java.util.Properties;
  */
 public class IAOsetResultPath 
 {
-	FileInputStream proFileName;
+	FileInputStream proFileIAO,proFileATO;
 	File fIAMOneConfig,fIAOReportConfig;
-	Properties objproperties = new Properties();
+	String srecorddir, screenshotdir, reportdir,atureportdir;
+	Properties objProfIAO, objProfATO;
 	
 	public void setResultsPath(String sPaths) throws IOException
 	{
 		File fIAMOneConfig,fIAOReportConfig;
-		
+		objProfIAO = new Properties();
 		fIAMOneConfig = new File("../config/IAMONE.properties"); 
-		proFileName = new FileInputStream(fIAMOneConfig.getPath());
-		objproperties.load(proFileName);
+		proFileIAO = new FileInputStream(fIAMOneConfig.getPath());
+		objProfIAO.load(proFileIAO);
 		
-		objproperties.setProperty("IAMONE.recording.dir",objproperties.getProperty("IAMONE.recording.dir")+sPaths+"/");
-		objproperties.setProperty("IAMONE.ScreenShot.dir",objproperties.getProperty("IAMONE.ScreenShot.dir")+sPaths+"/");
-		objproperties.setProperty("IAMONE.ScreenShot.dir",objproperties.getProperty("IAMONE.Reports")+sPaths+"/");
+		if(objProfIAO.getProperty("IAMONE.recording.dir").equals(""))
+		{
+			objProfIAO.setProperty("IAMONE.recording.dir","../Reports/Video/"+sPaths+"/");
+		}
+		else
+		{
+			objProfIAO.setProperty("IAMONE.recording.dir","");
+			objProfIAO.setProperty("IAMONE.recording.dir","../Reports/Video/"+sPaths+"/");
+			
+		}
+		if(objProfIAO.getProperty("IAMONE.ScreenShot.dir").equals(""))
+		{
+			objProfIAO.setProperty("IAMONE.ScreenShot.dir","../Reports/Images/"+sPaths+"/");
+		}
+		else
+		{
+			objProfIAO.setProperty("IAMONE.ScreenShot.dir","");
+			objProfIAO.setProperty("IAMONE.ScreenShot.dir","../Reports/Images/"+sPaths+"/");
+			
+		}
+		if(objProfIAO.getProperty("IAMONE.Reports").equals(""))
+		{
+			objProfIAO.setProperty("IAMONE.Reports","../Reports/Html/"+sPaths+"/");
+		}
+		else
+		{
+			objProfIAO.setProperty("IAMONE.Reports","");
+			objProfIAO.setProperty("IAMONE.Reports","../Reports/Html/"+sPaths+"/");
+			
+		}
+		objProfIAO.store(new FileOutputStream(fIAMOneConfig), null);
 		
+		objProfATO = new Properties();
 		fIAOReportConfig = new File("../config/atu.properties"); 
-		proFileName = new FileInputStream(fIAMOneConfig.getPath());
-		objproperties.load(proFileName);
-		objproperties.setProperty("atu.reports.dir",objproperties.getProperty("atu.reports.dir")+sPaths+"/");
+		proFileATO = new FileInputStream(fIAMOneConfig.getPath());
+		objProfATO.load(proFileATO);
+		if(objProfATO.getProperty("atu.reports.dir").equals(""))
+		{
+			objProfATO.setProperty("atu.reports.dir","../Reports/ATU Reports/"+sPaths+"/");
+		}
+		else
+		{
+			objProfATO.setProperty("atu.reports.dir","");
+			objProfATO.setProperty("atu.reports.dir","../Reports/ATU Reports/"+sPaths+"/");
+		}
 		
-		objproperties.store(new FileOutputStream(fIAMOneConfig), null);
-		objproperties.store(new FileOutputStream(fIAOReportConfig), null);
+		objProfATO.store(new FileOutputStream(fIAOReportConfig), null);
 	}
 	public static void main(String []args)
 	{

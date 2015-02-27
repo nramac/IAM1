@@ -6,7 +6,7 @@
 <!-- ========== Initialize Properties =================================== -->
     <property environment="env"/>
     <property file="IAOBuildconfig.properties"/>
-    <property file="IAMONE.properties"/>
+    <property file="../config/IAMONE.properties"/>
     <property name="iamone.dest" value="${iamone.home}/bin"/>
     <property name="iamone.src" value="${iamone.home}/src"/>
     <property name="iamone.report" value="${IAMONE.Reports}"/>
@@ -74,5 +74,12 @@
     		<fileset dir="${iamone.home}/lib/" includes="*.jar"/>
     		<fileset dir="${iamone.home}/bin" includes="*.jar"/>
     		</path>
+    	<java classname="org.vukfactory.iamone.util.IAOsetResultPath">
+     	<arg value="${TestSuiteName}"/>
+    	 <classpath>
+       		<fileset dir="${iamone.home}/lib/" includes="*.jar"/>
+      		 <pathelement path="${iamone.classpath}"/>
+    		 </classpath>
+  		 </java>
     </target>
 </project>
