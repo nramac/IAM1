@@ -9,7 +9,8 @@
     <property file="../config/IAMONE.properties"/>
     <property name="iamone.dest" value="${iamone.home}/bin"/>
     <property name="iamone.src" value="${iamone.home}/src"/>
-    <property name="iamone.report" value="${IAMONE.Reports}"/>
+    <property name="iamone.report" value="${iamone.home}/Reports"/>
+     <property name="iamone.testNgReports" value="${IAMONE.Reports}"/>
 	
 	 <target name="setClassPath" unless="iamone.classpath">
         <path id="classpath_jars">
@@ -72,7 +73,7 @@
       		 <pathelement path="${iamone.classpath}"/>
     		 </classpath>
   		 </java>
-   		<testng outputDir="${iamone.report}"  haltOnfailure="false">
+   		<testng outputDir="${iamone.testNgReports}"  haltOnfailure="false">
     		<xmlfileset dir="${TestSuiteDir}" includes="${TestSuiteName}" />
     		<classpath>
     		                               <pathelement path="${iamone.dest}"/>
