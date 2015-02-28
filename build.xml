@@ -63,7 +63,9 @@
 	<target name="buildJar" depends="compile">
 		<jar destfile="${jar.file}" basedir="${iamone.dest}">
 			<zipgroupfileset  dir="${iamone.home}/lib/support" includes="**/*.jar" />
-				<fileset dir="${iamone.home}/config" includes ="**/*.properties" />
+			<fileset dir="${iamone.home}">
+			 <include name="config/*.properties"/>
+    		</fileset>   
 		</jar>
 	</target>
 	

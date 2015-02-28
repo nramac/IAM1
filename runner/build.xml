@@ -24,12 +24,23 @@
             <format property="start.time" pattern="MM/dd/yyyy hh:mm aa" />
         </tstamp>
        
-        <taskdef resource="testngtasks" classpath="${iamone.home}/lib/iao_1.0.1.jar"/>
+        <taskdef resource="testngtasks" classpath="${iamone.home}/lib/iao_1.0.2.jar"/>
     </target>
     
+    <target name = "copy_Archive">
+         <tstamp>
+        <format property="current.time"
+            pattern="yyyyMMdd_HHmmss" />
+	    </tstamp>
+        <copy todir="${iamone.home}/Archive/Reports/${current.time}" >  
+        <fileset dir="${iamone.home}/Reports" includes="**"/>  
+ 		</copy>
+    </target>
      <!-- clean -->
-    <target name="clean">
+    <target name="clean" depends = "copy_Archive">
         <delete dir="${iamone.dest}"/>
+        <delete dir="${iamone.report}"/>
+        
     </target>
      <!-- compile -->
     <target name="compile" depends="init, clean" > 
@@ -55,7 +66,7 @@
 		<!--on building for jar file please remove the below testng attributes-->
 		<echo message="Running Tests..." />
 		<java classname="org.vukfactory.iamone.util.IAOsetResultPath">
-     	<arg value="${TestSuiteName}"/>
+     	<arg value="${TestResultPath}"/>
     	 <classpath>
        		<fileset dir="${iamone.home}/lib/" includes="*.jar"/>
       		 <pathelement path="${iamone.classpath}"/>
@@ -74,12 +85,5 @@
     		<fileset dir="${iamone.home}/lib/" includes="*.jar"/>
     		<fileset dir="${iamone.home}/bin" includes="*.jar"/>
     		</path>
-    	<java classname="org.vukfactory.iamone.util.IAOsetResultPath">
-     	<arg value="${TestSuiteName}"/>
-    	 <classpath>
-       		<fileset dir="${iamone.home}/lib/" includes="*.jar"/>
-      		 <pathelement path="${iamone.classpath}"/>
-    		 </classpath>
-  		 </java>
     </target>
 </project>

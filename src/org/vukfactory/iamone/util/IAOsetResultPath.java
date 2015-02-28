@@ -6,6 +6,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Properties;
 
+import org.apache.commons.lang3.StringEscapeUtils;
+
 /**
  * @author venmaum
  *		This class is a utility class for wiritn the reports path to the Properties File 
@@ -14,12 +16,10 @@ public class IAOsetResultPath
 {
 	FileInputStream proFileIAO,proFileATO;
 	File fIAMOneConfig,fIAOReportConfig;
-	String srecorddir, screenshotdir, reportdir,atureportdir;
 	Properties objProfIAO, objProfATO;
 	
 	public void setResultsPath(String sPaths) throws IOException
 	{
-		File fIAMOneConfig,fIAOReportConfig;
 		objProfIAO = new Properties();
 		fIAMOneConfig = new File("../config/IAMONE.properties"); 
 		proFileIAO = new FileInputStream(fIAMOneConfig.getPath());
@@ -28,6 +28,7 @@ public class IAOsetResultPath
 		if(objProfIAO.getProperty("IAMONE.recording.dir").equals(""))
 		{
 			objProfIAO.setProperty("IAMONE.recording.dir","../Reports/Video/"+sPaths+"/");
+			
 		}
 		else
 		{
@@ -58,29 +59,27 @@ public class IAOsetResultPath
 		objProfIAO.store(new FileOutputStream(fIAMOneConfig), null);
 		
 		objProfATO = new Properties();
+		
 		fIAOReportConfig = new File("../config/atu.properties"); 
-		proFileATO = new FileInputStream(fIAMOneConfig.getPath());
+		proFileATO = new FileInputStream(fIAOReportConfig.getPath());
+		
 		objProfATO.load(proFileATO);
+		
 		if(objProfATO.getProperty("atu.reports.dir").equals(""))
 		{
-			objProfATO.setProperty("atu.reports.dir","../Reports/ATU Reports/"+sPaths+"/");
+			objProfATO.setProperty("atu.reports.dir","../Reports/ATUReports/"+sPaths+"/");
 		}
 		else
 		{
 			objProfATO.setProperty("atu.reports.dir","");
-			objProfATO.setProperty("atu.reports.dir","../Reports/ATU Reports/"+sPaths+"/");
+			objProfATO.setProperty("atu.reports.dir","../Reports/ATUReports/"+sPaths+"/");
 		}
 		
 		objProfATO.store(new FileOutputStream(fIAOReportConfig), null);
 	}
-	public static void main(String []args)
+	public static void main(String []args) throws IOException
 	{
 		IAOsetResultPath objsetPath = new IAOsetResultPath();
-		try {
-			objsetPath.setResultsPath(args[0]);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		objsetPath.setResultsPath(args[0]);
 	}
 }
