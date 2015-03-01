@@ -23,6 +23,20 @@ public class IAODrivers {
 	DesiredCapabilities capabilities = new DesiredCapabilities();
 	
 	
+	public WebDriver setWebBrowser(String sBrowserType)
+	{
+		if(sBrowserType.equals("Firefox") && sBrowserType.equalsIgnoreCase("firefox"))
+		{
+			driver = new FirefoxDriver();
+		}
+		else if(sBrowserType.equals("chrome") && sBrowserType.equalsIgnoreCase("chrome"))
+		{
+			driver = new ChromeDriver();
+		}
+		return driver;
+		
+	}
+	
 	//This method will invoke Firefox driver
 	public WebDriver setFirefoxBrowser() 
 	{
@@ -114,4 +128,6 @@ public class IAODrivers {
 	{
 			driver.quit();
 	}	
+	
+	
 }
