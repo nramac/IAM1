@@ -6,18 +6,24 @@ import io.appium.java_client.remote.MobileCapabilityType;
 import io.appium.java_client.remote.MobilePlatform;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.safari.SafariDriver;
+import org.testng.Assert;
 
 public class IAODrivers {
 	
 	public static WebDriver driver;
+	File fIEPath,fCHPath;
+	 private  String OS = null;
 	
 	@SuppressWarnings("static-access")
 	DesiredCapabilities capabilities = new DesiredCapabilities();
@@ -27,16 +33,31 @@ public class IAODrivers {
 	{
 		if(sBrowserType.equals("Firefox") && sBrowserType.equalsIgnoreCase("firefox"))
 		{
-			driver = new FirefoxDriver();
+			driver = setFirefoxBrowser();
 		}
 		else if(sBrowserType.equals("chrome") && sBrowserType.equalsIgnoreCase("chrome"))
 		{
-			driver = new ChromeDriver();
+			driver = setChromeBrowser();
+		}
+		else if(sBrowserType.equals("InternetExplorer") && sBrowserType.equalsIgnoreCase("InternetExplorer"))
+		{
+			driver = setInternetExplorerBrowser();
 		}
 		return driver;
 		
 	}
 	
+	//This method will invoke InternetExplorer driver
+	public WebDriver setInternetExplorerBrowser() 
+	{
+		if (isthisWindowsOS()) {
+			fIEPath = new File("config/applications/IEDriverServer.exe"); 
+			System.setProperty("webdriver.ie.driver", fIEPath.getPath());
+				driver = new FirefoxDriver();
+		}
+			return driver;
+	}
+		
 	//This method will invoke Firefox driver
 	public WebDriver setFirefoxBrowser() 
 	{
@@ -45,11 +66,24 @@ public class IAODrivers {
 	}
 	
 	//This method will invoke chrome driver
-		public WebDriver setChromeBrowser() 
-		{
+	public WebDriver setChromeBrowser() 
+	{
+		if (isthisWindowsOS()) {
+			fCHPath = new File("config/applications/chromedriver.exe"); 
+			System.setProperty("webdriver.chrome.driver", fCHPath.getPath());
 			driver = new ChromeDriver();
+		} 
+		
+		return driver;
+	}
+	
+	//This method will invoke Safari driver
+	public WebDriver setSafariBrowser() 
+	{
+		
+			driver = new SafariDriver();
 			return driver;
-		}
+	}
 	
 	//This method will invoke Android driver with Chrome as Browser
 	public WebDriver setAndroidBrowser(String sDeviceName, String sOSVersion, String sServerName) {
@@ -123,11 +157,20 @@ public class IAODrivers {
 		return (IOSDriver) driver;
 	}
 	
-	
 	public void closeDriver(WebDriver driver) 
 	{
 			driver.quit();
 	}	
 	
+	public  String getOperatingSystem()
+	{
+	      if(OS == null) { OS = System.getProperty("os.name"); }
+	      return OS;
+	}
 	
+	public  boolean isthisWindowsOS()
+	{
+	      return getOperatingSystem().startsWith("Windows");
+	}
+
 }
