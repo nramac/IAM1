@@ -1,15 +1,19 @@
 package org.vukfactory.iamone.ui;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+
 import org.openqa.selenium.By;
+import org.openqa.selenium.By.ByClassName;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 
-public class IAOPageInteraction
+public class IAOPageInteraction extends IAOPageElements
 {
-	public WebElement byclassName(WebDriver driver, String sClassId)
+	public WebElement clickByclassName(WebDriver driver, String sClassId)
 	{
 		return driver.findElement(By.className(sClassId));
 	}
@@ -43,27 +47,27 @@ public class IAOPageInteraction
 		Select selectRef = null;
 		if(sDomType.equals("name"))
 		{
-			selectRef = new Select(driver.findElement(By.name(sUIReference)));
+			selectRef = new Select(byName(driver, sUIReference));
 		}
 		else if(sDomType.equals("linkText"))
 		{
-			selectRef = new Select(driver.findElement(By.name(sUIReference)));
+			selectRef = new Select(byLinkText(driver, sUIReference));
 		}
 		else if(sDomType.equals("id"))
 		{
-			selectRef = new Select(driver.findElement(By.name(sUIReference)));
+			selectRef = new Select(byId(driver, sUIReference));
 		}
 		else if(sDomType.equals("className"))
 		{
-			selectRef = new Select(driver.findElement(By.name(sUIReference)));
+			selectRef = new Select(byclassName(driver, sUIReference));
 		}
 		else if(sDomType.equals("xpath"))
 		{
-			selectRef = new Select(driver.findElement(By.name(sUIReference)));
+			selectRef = new Select(byXpath(driver, sUIReference));
 		}
 		else if(sDomType.equals("cssSelector"))
 		{
-			selectRef = new Select(driver.findElement(By.name(sUIReference)));
+			selectRef = new Select(byCSSPath(driver, sUIReference));
 		}
 		if(selectType.equals("Index"))
 		{
@@ -83,29 +87,28 @@ public class IAOPageInteraction
 		Select selectRef = null;
 		if(sDomType.equals("name"))
 		{
-			selectRef = new Select(driver.findElement(By.name(sUIReference)));
+			selectRef = new Select(byName(driver, sUIReference));
 		}
 		else if(sDomType.equals("linkText"))
 		{
-			selectRef = new Select(driver.findElement(By.name(sUIReference)));
+			selectRef = new Select(byLinkText(driver, sUIReference));
 		}
 		else if(sDomType.equals("id"))
 		{
-			selectRef = new Select(driver.findElement(By.name(sUIReference)));
+			selectRef = new Select(byId(driver, sUIReference));
 		}
 		else if(sDomType.equals("className"))
 		{
-			selectRef = new Select(driver.findElement(By.name(sUIReference)));
+			selectRef = new Select(byclassName(driver, sUIReference));
 		}
 		else if(sDomType.equals("xpath"))
 		{
-			selectRef = new Select(driver.findElement(By.name(sUIReference)));
+			selectRef = new Select(byXpath(driver, sUIReference));
 		}
 		else if(sDomType.equals("cssSelector"))
 		{
-			selectRef = new Select(driver.findElement(By.name(sUIReference)));
+			selectRef = new Select(byCSSPath(driver, sUIReference));
 		}
-		
 		if(selectType.equals("Index"))
 		{
 			selectRef.deselectByIndex(Integer.parseInt(sValue));
@@ -123,7 +126,6 @@ public class IAOPageInteraction
 	public boolean isElementPresent(WebDriver driver,By by) {
 	    try {
 	      driver.findElement(by);
-	      
 	      return true;
 	    } catch (NoSuchElementException e) {
 	      return false;

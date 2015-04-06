@@ -157,20 +157,28 @@ public class IAODrivers {
 		return (IOSDriver) driver;
 	}
 	
+	
 	public void closeDriver(WebDriver driver) 
 	{
 			driver.quit();
 	}	
 	
-	public  String getOperatingSystem()
+	
+	public static void main(String args[])
 	{
-	      if(OS == null) { OS = System.getProperty("os.name"); }
-	      return OS;
+		IAODrivers od = new IAODrivers();
+		WebDriver driver = od.setSafariBrowser();
+		od.closeDriver(driver);
 	}
 	
+	public  String getOperatingSystem()
+	   {
+	      if(OS == null) { OS = System.getProperty("os.name"); }
+	      return OS;
+	   }
 	public  boolean isthisWindowsOS()
-	{
+	   {
 	      return getOperatingSystem().startsWith("Windows");
-	}
+	   }
 
 }
