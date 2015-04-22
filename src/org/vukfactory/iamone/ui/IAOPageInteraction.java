@@ -131,4 +131,33 @@ public class IAOPageInteraction extends IAOPageElements
 	      return false;
 	    }
 	}
+	
+	public boolean isElementDisplayed(WebDriver driver, By by){
+		try{
+			driver.findElement(by).isDisplayed();
+			return true;
+		}catch(org.openqa.selenium.NoSuchElementException e){
+			return false;
+		}
+	}
+	
+	public boolean isElementEnabled(WebDriver driver, By by){
+		try{
+			driver.findElement(by).isEnabled();
+			return true;
+		}catch(org.openqa.selenium.NoSuchElementException e){
+			return false;
+		}
+	}
+	
+	public boolean isElementSelected(WebDriver driver, By by){
+		try{
+			driver.findElement(by).isSelected();
+			return true;
+		}catch(org.openqa.selenium.NoSuchElementException e){
+			return false;
+		}
+	}
+	
+	
 }

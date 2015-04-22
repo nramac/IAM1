@@ -95,6 +95,174 @@ public class IAOUIAssert
 			Assert.assertFalse(objPageInteraction.isElementPresent(driver,By.cssSelector(sUIReference)));
 		}
 	}
+	
+	public void assertTrue_isDisplayed(WebDriver driver,String sDomType, String sUIReference)
+	{
+		if(sDomType.equals("linkText"))
+		{
+			Assert.assertTrue(objPageInteraction.isElementDisplayed(driver,By.linkText(sUIReference)));
+		}
+		else if(sDomType.equals("id"))
+		{
+			Assert.assertTrue(objPageInteraction.isElementDisplayed(driver,By.id(sUIReference)));
+		}
+		else if(sDomType.equals("className"))
+		{
+			Assert.assertTrue(objPageInteraction.isElementDisplayed(driver,By.className(sUIReference)));
+		}
+		else if(sDomType.equals("name"))
+		{
+			Assert.assertTrue(objPageInteraction.isElementDisplayed(driver,By.name(sUIReference)));
+		}
+		else if(sDomType.equals("xpath"))
+		{
+			Assert.assertTrue(objPageInteraction.isElementDisplayed(driver,By.xpath(sUIReference)));
+		}
+		else if(sDomType.equals("cssSelector"))
+		{
+			Assert.assertTrue(objPageInteraction.isElementDisplayed(driver,By.cssSelector(sUIReference)));
+		}
+	}
+	
+	public void assertTrue_isEnabled(WebDriver driver,String sDomType, String sUIReference)
+	{
+		if(sDomType.equals("linkText"))
+		{
+			Assert.assertTrue(objPageInteraction.isElementEnabled(driver,By.linkText(sUIReference)));
+		}
+		else if(sDomType.equals("id"))
+		{
+			Assert.assertTrue(objPageInteraction.isElementEnabled(driver,By.id(sUIReference)));
+		}
+		else if(sDomType.equals("className"))
+		{
+			Assert.assertTrue(objPageInteraction.isElementEnabled(driver,By.className(sUIReference)));
+		}
+		else if(sDomType.equals("name"))
+		{
+			Assert.assertTrue(objPageInteraction.isElementEnabled(driver,By.name(sUIReference)));
+		}
+		else if(sDomType.equals("xpath"))
+		{
+			Assert.assertTrue(objPageInteraction.isElementEnabled(driver,By.xpath(sUIReference)));
+		}
+		else if(sDomType.equals("cssSelector"))
+		{
+			Assert.assertTrue(objPageInteraction.isElementEnabled(driver,By.cssSelector(sUIReference)));
+		}
+	}
+	
+	public void assertTrue_isSelected(WebDriver driver,String sDomType, String sUIReference)
+	{
+		if(sDomType.equals("linkText"))
+		{
+			Assert.assertTrue(objPageInteraction.isElementSelected(driver,By.linkText(sUIReference)));
+		}
+		else if(sDomType.equals("id"))
+		{
+			Assert.assertTrue(objPageInteraction.isElementSelected(driver,By.id(sUIReference)));
+		}
+		else if(sDomType.equals("className"))
+		{
+			Assert.assertTrue(objPageInteraction.isElementSelected(driver,By.className(sUIReference)));
+		}
+		else if(sDomType.equals("name"))
+		{
+			Assert.assertTrue(objPageInteraction.isElementSelected(driver,By.name(sUIReference)));
+		}
+		else if(sDomType.equals("xpath"))
+		{
+			Assert.assertTrue(objPageInteraction.isElementSelected(driver,By.xpath(sUIReference)));
+		}
+		else if(sDomType.equals("cssSelector"))
+		{
+			Assert.assertTrue(objPageInteraction.isElementSelected(driver,By.cssSelector(sUIReference)));
+		}
+	}
+	
+	public void assertFalse_isDisplayed(WebDriver driver,String sDomType, String sUIReference)
+	{
+		if(sDomType.equals("linkText"))
+		{
+			Assert.assertFalse(objPageInteraction.isElementDisplayed(driver,By.linkText(sUIReference)));
+		}
+		else if(sDomType.equals("id"))
+		{
+			Assert.assertFalse(objPageInteraction.isElementDisplayed(driver,By.id(sUIReference)));
+		}
+		else if(sDomType.equals("className"))
+		{
+			Assert.assertFalse(objPageInteraction.isElementDisplayed(driver,By.className(sUIReference)));
+		}
+		else if(sDomType.equals("name"))
+		{
+			Assert.assertFalse(objPageInteraction.isElementDisplayed(driver,By.name(sUIReference)));
+		}
+		else if(sDomType.equals("xpath"))
+		{
+			Assert.assertFalse(objPageInteraction.isElementDisplayed(driver,By.xpath(sUIReference)));
+		}
+		else if(sDomType.equals("cssSelector"))
+		{
+			Assert.assertFalse(objPageInteraction.isElementDisplayed(driver,By.cssSelector(sUIReference)));
+		}
+	}
+	
+	public void assertFalse_isEnabled(WebDriver driver,String sDomType, String sUIReference)
+	{
+		if(sDomType.equals("linkText"))
+		{
+			Assert.assertFalse(objPageInteraction.isElementEnabled(driver,By.linkText(sUIReference)));
+		}
+		else if(sDomType.equals("id"))
+		{
+			Assert.assertFalse(objPageInteraction.isElementEnabled(driver,By.id(sUIReference)));
+		}
+		else if(sDomType.equals("className"))
+		{
+			Assert.assertFalse(objPageInteraction.isElementEnabled(driver,By.className(sUIReference)));
+		}
+		else if(sDomType.equals("name"))
+		{
+			Assert.assertFalse(objPageInteraction.isElementEnabled(driver,By.name(sUIReference)));
+		}
+		else if(sDomType.equals("xpath"))
+		{
+			Assert.assertFalse(objPageInteraction.isElementEnabled(driver,By.xpath(sUIReference)));
+		}
+		else if(sDomType.equals("cssSelector"))
+		{
+			Assert.assertFalse(objPageInteraction.isElementEnabled(driver,By.cssSelector(sUIReference)));
+		}
+	}
+	
+	public void assertFalse_isSelected(WebDriver driver,String sDomType, String sUIReference)
+	{
+		if(sDomType.equals("linkText"))
+		{
+			Assert.assertFalse(objPageInteraction.isElementSelected(driver,By.linkText(sUIReference)));
+		}
+		else if(sDomType.equals("id"))
+		{
+			Assert.assertFalse(objPageInteraction.isElementSelected(driver,By.id(sUIReference)));
+		}
+		else if(sDomType.equals("className"))
+		{
+			Assert.assertFalse(objPageInteraction.isElementSelected(driver,By.className(sUIReference)));
+		}
+		else if(sDomType.equals("name"))
+		{
+			Assert.assertFalse(objPageInteraction.isElementSelected(driver,By.name(sUIReference)));
+		}
+		else if(sDomType.equals("xpath"))
+		{
+			Assert.assertFalse(objPageInteraction.isElementSelected(driver,By.xpath(sUIReference)));
+		}
+		else if(sDomType.equals("cssSelector"))
+		{
+			Assert.assertFalse(objPageInteraction.isElementSelected(driver,By.cssSelector(sUIReference)));
+		}
+	}
 
 
 }
