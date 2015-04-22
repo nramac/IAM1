@@ -12,27 +12,27 @@ public class IAOUIAssert
 	{
 		if(sDomType.equals("linkText"))
 		{
-			Assert.assertEquals( objPageInteraction.byLinkText(driver, sUIReference),sExpectedValue);
+			Assert.assertEquals( objPageInteraction.byLinkText(driver, sUIReference).getText(),sExpectedValue);
 		}
 		else if(sDomType.equals("id"))
 		{
-			Assert.assertEquals( objPageInteraction.byId(driver, sUIReference),sExpectedValue);
+			Assert.assertEquals( objPageInteraction.byId(driver, sUIReference).getText(),sExpectedValue);
 		}
 		else if(sDomType.equals("className"))
 		{
-			Assert.assertEquals( objPageInteraction.byclassName(driver, sUIReference),sExpectedValue);
+			Assert.assertEquals( objPageInteraction.byclassName(driver, sUIReference).getText(),sExpectedValue);
 		}
 		else if(sDomType.equals("name"))
 		{
-			Assert.assertEquals( objPageInteraction.byName(driver, sUIReference),sExpectedValue);
+			Assert.assertEquals( objPageInteraction.byName(driver, sUIReference).getText(),sExpectedValue);
 		}
 		else if(sDomType.equals("xpath"))
 		{
-			Assert.assertEquals( objPageInteraction.byXpath(driver, sUIReference),sExpectedValue);
+			Assert.assertEquals( objPageInteraction.byXpath(driver, sUIReference).getText(),sExpectedValue);
 		}
 		else if(sDomType.equals("cssSelector"))
 		{
-			Assert.assertEquals( objPageInteraction.byCSSPath(driver, sUIReference),sExpectedValue);
+			Assert.assertEquals( objPageInteraction.byCSSPath(driver, sUIReference).getText(),sExpectedValue);
 		}
 	}
 	public void assertEquals(String sActualValue,String sExpectedValue)
