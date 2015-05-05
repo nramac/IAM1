@@ -263,6 +263,10 @@ public class IAOUIAssert
 			Assert.assertFalse(objPageInteraction.isElementSelected(driver,By.cssSelector(sUIReference)));
 		}
 	}
-
+	
+	public void assertFail(String failureMessage)
+	{
+		Assert.fail(failureMessage);
+	}
 
 }
